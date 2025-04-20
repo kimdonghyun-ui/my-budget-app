@@ -42,10 +42,10 @@ export default function TransactionFormPage() {
 
     // 수정 모드일 경우 기존 데이터 불러오기
     useEffect(() => {
-        if (!isEdit) { // 수정 모드 아닌경우 막기
+        if (!isEdit || !user) { // 수정 모드 아닌경우 막기
             return;
         }
-
+        // console.log('user', user);
         // 수정 모드일 경우 기존 데이터 불러오기
         const fetchData = async () => {
             const res = await fetchDetailTransaction(id); // 기존 데이터 불러오기
