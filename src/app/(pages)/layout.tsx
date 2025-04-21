@@ -1,3 +1,4 @@
+import Header from "@/components/layout/Header";
 
 export default function RootLayout({
   children,
@@ -5,6 +6,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="pt-16">{children}</div>
+    <>
+      <Header showBackButton />
+      <div className="pt-16">{children}</div>
+    </>
   );
 }
