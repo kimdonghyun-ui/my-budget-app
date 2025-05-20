@@ -59,6 +59,7 @@ export default function ProfileContent() {
   useEffect(() => {
     if (editedUser.email === 'hello@naver.com') {
       setEditedUser(prev => ({ ...prev, password: 'hello123' }));
+      console.log('해당계정은 테스트 계정입니다.',editedUser);
     }
   }, [editedUser.email]);
 
