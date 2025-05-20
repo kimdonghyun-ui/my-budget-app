@@ -5,7 +5,6 @@ import { useAuthStore } from '@/store/authStore';
 import { handleFileUpload } from "@/utils/fileUpload";
 import ProfileImage from "@/components/ProfileImage";
 import { useAuth } from '@/hooks/useAuth';
-import toast from 'react-hot-toast';
 
 export default function ProfileContent() {
   const { user } = useAuthStore();
@@ -35,7 +34,6 @@ export default function ProfileContent() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (editedUser.email === 'hello@naver.com') {
-      toast.success('hello@naver.com계정은 테스트 계정이므로 비밀번호 변경이 불가능합니다.');
       setEditedUser(prev => ({
         ...prev,
         password: 'hello123'
@@ -148,7 +146,7 @@ export default function ProfileContent() {
                       type="password"
                       value={editedUser.password}
                       onChange={(e) => setEditedUser(prev => ({ ...prev, password: e.target.value }))}
-                      placeholder="변경하려면 입력하세요"
+                      placeholder={editedUser.email === 'hello@naver.com' ? '테스트계정은 비밀번호 변경불가' : '변경하려면 입력하세요'}
                       className="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 
                                focus:ring-2 focus:ring-blue-500 focus:border-transparent
                                dark:bg-gray-700 dark:text-white"
