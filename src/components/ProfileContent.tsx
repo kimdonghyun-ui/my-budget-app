@@ -5,6 +5,7 @@ import { useAuthStore } from '@/store/authStore';
 import { handleFileUpload } from "@/utils/fileUpload";
 import ProfileImage from "@/components/ProfileImage";
 import { useAuth } from '@/hooks/useAuth';
+import { toast } from 'react-hot-toast';
 
 export default function ProfileContent() {
   const { user } = useAuthStore();
@@ -55,8 +56,8 @@ export default function ProfileContent() {
       profileImage: user?.profileImage || ''
     });
 
-    if (editedUser.email === 'hello@naver.com') {
-      console.log('해당계정은 테스트 계정입니다.');
+    if ((editedUser.email === 'hello@naver.com') && isEditing) {
+      toast.success('hello@naver.com 계정은 테스트 계정이라 이메일 및 비밀번호 변경이 불가능합니다.');
     }
 
   }, [isEditing, user]);
