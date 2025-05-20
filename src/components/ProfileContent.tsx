@@ -40,7 +40,6 @@ export default function ProfileContent() {
         ...prev,
         password: 'hello123'
       }));
-      return;
     }
     setError(null);
     setIsLoading(true);
