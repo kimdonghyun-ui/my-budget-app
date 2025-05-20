@@ -128,6 +128,7 @@ export default function ProfileContent() {
                       이메일
                     </label>
                     <input
+                      disabled={editedUser.email === 'hello@naver.com'}
                       type="email"
                       value={editedUser.email}
                       onChange={(e) => setEditedUser(prev => ({ ...prev, email: e.target.value }))}
