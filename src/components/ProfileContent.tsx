@@ -33,12 +33,6 @@ export default function ProfileContent() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (editedUser.email === 'hello@naver.com') {
-      setEditedUser(prev => ({
-        ...prev,
-        password: 'hello123'
-      }));
-    }
     setError(null);
     setIsLoading(true);
 
@@ -61,6 +55,12 @@ export default function ProfileContent() {
       profileImage: user?.profileImage || ''
     });
   }, [isEditing, user]);
+
+  useEffect(() => {
+    if (editedUser.email === 'hello@naver.com') {
+      setEditedUser(prev => ({ ...prev, password: 'hello123' }));
+    }
+  }, [editedUser.email]);
 
   return (
 
